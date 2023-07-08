@@ -6,7 +6,7 @@ GitHub action that lets you *easily* lint **one** or **multiple** packages/files
   
   > User customizable $Fail Score$ (defaults to 5/10).
   > > Auto Calculates step size based on $Fail Score$. 
-  > > $$ step = (10 - FailScore)/5 $$
+  > > $ step = (10 - FailScore)/5 $
   >
   > > Fails job after updating badge.
 
