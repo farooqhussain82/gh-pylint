@@ -74,3 +74,4 @@ runs:
 
     - name: "Job success decision"
       run: exit ${{steps.score.outputs.exit_code}}
+      shell: bash
