@@ -18,8 +18,8 @@ inputs:
     description: "The path, relative to the root of the repo, of the README.md to update with the pylint badge"
     default: README.md
     required: false
-  fail_below:
-    description: "Score below which Linting should Fail"
+  fail-below:
+    description: "Score below which Linting should fail"
     default: 5
     required: false
 
