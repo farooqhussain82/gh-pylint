@@ -18,57 +18,59 @@ inputs:
     description: "The path, relative to the root of the repo, of the README.md to update with the pylint badge"
     default: README.md
     required: false
+  fail_below:
+    description: "Score below which Linting should Fail"
+    default: 5
+    required: false
 
 runs:
   using: "composite"
 
   steps:
-    -
-      name: "Checkout Repository - PR"
+
+    - name: "Checkout Repository - PR"
       uses: actions/checkout@v3
       if: github.event_name == 'pull_request'
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    -
-      name: "Checkout Repository - PUSH"
+  
+    - name: "Checkout Repository - PUSH"
       uses: actions/checkout@v3
       if: github.event_name != 'pull_request'
-    -
-      name: "Setup python"
+
+    - name: "Setup python"
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python-version }}
-    -
-      name: "Setup installation requirements"
+  
+    - name: "Setup installation requirements"
       run: |
         pip install --upgrade pip
         pip install wheel pylint
         pip install -r ${{ inputs.requirements-path }}
       shell: bash
-    -
-      name: "Lint package(s)"
+
+    - name: "Lint package(s)"
       run: |
         pkgs_pth=$(python3 -c 'import re; print(" ".join(re.findall("([^\s]+)", ${{ toJSON(inputs.package-path) }})))')
         pylint --exit-zero --output-format=text:pylint_score.txt,colorized $pkgs_pth
       shell: bash
-    -
-      name: "Get numeric pylint score and badge color"
-      id: parameters-badge
-      run: python ${{ github.action_path }}/get_score_color.py
-      shell: bash
-    -
-      name: "Create badge and substitute it in README.md"
+
+    - name: "Create badge and substitute it in README.md"
+      id: score
       run: |
-        python ${{ github.action_path }}/create_subs_badge.py \
+        python ${{ github.action_path }}/score.py \
         ${{ inputs.readme-path }} \
-        ${{ steps.parameters-badge.outputs.pylint_score }} \
-        ${{ steps.parameters-badge.outputs.badge_color }}
+        ${{ inputs.fail-below }}
       shell: bash
-    -
-      name: "Push README with changed badge to origin"
+
+    - name: "Push README with changed badge to origin"
       uses: EndBug/add-and-commit@v9
       with:
         add: 'README.md'
         default_author: github_actions
         message: 'Updated pylint badge'
         push: 'true'
+
+    - name: "Job success decision"
+      run: exit ${{steps.score.outputs.exit_code}}
