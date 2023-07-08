@@ -16,11 +16,11 @@ following one of the below rules:
 |      Range PyLint score                                             | Status          | Badge                                               |
 |:-------------------------------------------------------------------:|:---------------:|:---------------------------------------------------:|
 |     *PyLint score* $<= Fail Score$                                  | Fail            | ![pylint-darkred](/assets/images/darkred.svg)       |
-|     $FailScore <$ *PyLint score* $<= FailScore + 1*step$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
-|     $(FailScore + 1*step) <$ *PyLint score* $<= (FailScore + 2*step)$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
-|     $FailScore + 2*step <$ *PyLint score* $<= FailScore + 3*step$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
-|     $FailScore + 3*step <$ *PyLint score* $<= FailScore + 4*step$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
-|     $FailScore + 4*step <$ *PyLint score* $<= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
+|     $FailScore < *PyLint score* <= (FailScore + 1*step)$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
+|     $(FailScore + 1*step) < *PyLint score* <= (FailScore + 2*step)$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
+|     $(FailScore + 2*step) < *PyLint score* <= (FailScore + 3*step)$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
+|     $(FailScore + 3*step) < *PyLint score* $<= (FailScore + 4*step)$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
+|     $(FailScore + 4*step) < *PyLint score* <= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
 
 The action can be triggered by a **`Pull request`**, a **`Push`** or manually with **`workflow_dispatch`**. 
 If the score is changed, the `github_action` bot will change your badge with an automatic commit.

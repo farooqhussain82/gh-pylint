@@ -19,8 +19,6 @@ def create_color_dict(fail_below=5):
     return color_dict
 
 def get_badge_color(score, color_dict):
-
-            os.system("echo exit_code=" + exit_code + " >> $GITHUB_OUTPUT")
     for color, limit in color_dict.items():
         if score <= float(limit):
             return color
@@ -32,35 +30,35 @@ def get_score(fail_below):
     numeric_score = re.search(r"(?<=\s)(\d+\.\d+)\/\d+(?=\s)", pylint_result).group().split("/")[0]
 
     exit_code = 0
-    if score < fail_below:
+    if numeric_score < fail_below:
         exit_code = 1
 
     os.system("echo exit_code=" + exit_code + " >> $GITHUB_OUTPUT")
     return numeric_score
 
-def update_badge(readme_file_path, fail_below)
+def update_badge(readme_file_path, fail_below):
 
     color_dict = create_color_dict(fail_below)
     score = get_score(fail_below)
     badge_color = get_badge_color(score, color_dict)
 
-    if not os.path.isfile(readme_file_path:
-        raise FileNotFoundError(f"README.md path is wrong, no file can be located at {README_PATH}")
+    if not os.path.isfile(readme_file_path):
+        raise FileNotFoundError(f"README.md path is wrong, no file can be located at {readme_file_path}")
 
-    with open(README_PATH, "r", encoding="utf8") as f:
+    with open(readme_file_path, "r", encoding="utf8") as f:
         content = f.read()
 
     query = f"pylint-{score:0.02f}-{badge_color}?logo=python&logoColor=white"
     badge_url = f"https://img.shields.io/badge/{query}"
     badge_pattern = r"(?<=!\[pylint]\()(.*?)(?=\))"
 
-    if re.search(patt, content) is None:
+    if re.search(badge_pattern, content) is None:
         content_split = content.split("\n")
         # add badge in 2nd line
         content_split[1] = "![pylint]() " + content_split[1] 
         content = "\n".join(content_split)
 
-    result = re.sub(patt, badge_url, content)
+    result = re.sub(badge_pattern, badge_url, content)
     with open(readme_file_path, "w", encoding="utf8") as f:
         f.write(result)
 
