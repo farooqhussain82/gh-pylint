@@ -12,10 +12,10 @@ following one of the below rules:
 |:-------------------------------------------------------------------:|:---------------:|:---------------------------------------------------:|
 |     *PyLint score* $<= Fail Score$                                  | Fail            | ![pylint-darkred](/assets/images/darkred.svg)       |
 |     $Fail Score <$ *PyLint score* $<= Fail Score + 1*step$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
-|     $Fail Score + 1*step$ <*PyLint score* $<= Fail Score + 2*step$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
-|     $Fail Score + 2*step$ <*PyLint score* $<= Fail Score + 3*step$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
-|     $Fail Score + 3*step$ <*PyLint score* $<= Fail Score + 4*step$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
-|     $Fail Score + 4*step$ <*PyLint score* $<= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
+|     $Fail Score + 1*step$ *PyLint score* $<= Fail Score + 2*step$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
+|     $Fail Score + 2*step$ *PyLint score* $<= Fail Score + 3*step$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
+|     $Fail Score + 3*step$ *PyLint score* $<= Fail Score + 4*step$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
+|     $Fail Score + 4*step$ *PyLint score* $<= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
 
 The action can be triggered by a **`Pull request`**, a **`Push`** or manually with **`workflow_dispatch`**. 
 If the score is changed, the `github_action` bot will change your badge with an automatic commit
