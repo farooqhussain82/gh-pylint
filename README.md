@@ -17,7 +17,7 @@ following one of the below rules:
 |:-------------------------------------------------------------------:|:---------------:|:---------------------------------------------------:|
 |     *PyLint score* $<= Fail Score$                                  | Fail            | ![pylint-darkred](/assets/images/darkred.svg)       |
 |     $FailScore <$ *PyLint score* $<= FailScore + 1*step$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
-|     $FailScore + 1*step \lt$ *PyLint score* $<= FailScore + 2*step$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
+|     $(FailScore + 1*step) <$ *PyLint score* $<= (FailScore + 2*step)$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
 |     $FailScore + 2*step <$ *PyLint score* $<= FailScore + 3*step$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
 |     $FailScore + 3*step <$ *PyLint score* $<= FailScore + 4*step$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
 |     $FailScore + 4*step <$ *PyLint score* $<= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
