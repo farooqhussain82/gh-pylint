@@ -17,7 +17,7 @@ following one of the below rules:
 |:-------------------------------------------------------------------:|:---------------:|:---------------------------------------------------:|
 |     *PyLint score* $<= Fail Score$                                  | Fail            | ![pylint-darkred](/assets/images/darkred.svg)       |
 |     $FailScore <$ *PyLint score* $<= FailScore + 1*step$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
-|     $FailScore + 1*step <$ *PyLint score* $<= FailScore + 2*step$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
+|     $FailScore + 1*step \lt$ *PyLint score* $<= FailScore + 2*step$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
 |     $FailScore + 2*step <$ *PyLint score* $<= FailScore + 3*step$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
 |     $FailScore + 3*step <$ *PyLint score* $<= FailScore + 4*step$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
 |     $FailScore + 4*step <$ *PyLint score* $<= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
@@ -42,8 +42,7 @@ A quick example on how you would typically use this *action* (more examples in [
 To use this action you should perform two simple **first-time-only** operations:
 
 1. In order to have a dynamic updated badge, before using for the first time this action, you should put a ***placeholder
-badge*** in your `README.md` which will be substituted by the actual one as soon as you run this action. If placeholder \
-is not there, badge will be automatic appended to begining of second line.\
+badge*** in your `README.md` which will be substituted by the actual one as soon as you run this action. If placeholder is not there, badge will be automatic appended to begining of second line.\
 The placeholder badge should be in one of the following formats:
 <p align="center"><b><code>![pylint]()</code></b> or <b><code>[![pylint]()](https://redirect/link)</code></b></p>
 
