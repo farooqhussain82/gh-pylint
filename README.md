@@ -5,7 +5,8 @@ GitHub action that lets you *easily* lint **one** or **multiple** packages/files
   > Adds a **dynamic badge** to your `README.md` that lets you display the obtained score!
   
   > User customizable $Fail Score$ (defaults to 5/10).
-  > > Auto Calculates step size based on $Fail Score$. $$ step = (10 - FailScore)/5 $$
+  > > Auto Calculates step size based on $Fail Score$. 
+  > > $$ step = (10 - FailScore)/5 $$
   >
   > > Fails job after updating badge.
 
@@ -13,14 +14,14 @@ GitHub action that lets you *easily* lint **one** or **multiple** packages/files
 Each time the action is run, packages specified will be linted and a badge in the `README.md` is updated dynamically
 following one of the below rules:
 
-|      Range PyLint score                                             | Status          | Badge                                               |
-|:-------------------------------------------------------------------:|:---------------:|:---------------------------------------------------:|
-|     *PyLint score* $<= Fail Score$                                  | Fail            | ![pylint-darkred](/assets/images/darkred.svg)       |
-|     $FailScore <$ *PyLint score* $<= (FailScore + 1*step)$          | Need Improvement| ![pylint-red](/assets/images/red.svg)               |
-|     $(FailScore + 1*step)$ $<$ *PyLint score* $<= (FailScore + 2*step)$  | Below Average   | ![pylint-orange](/assets/images/orange.svg)         |
-|     $(FailScore + 2*step) < *PyLint score* <= (FailScore + 3*step)$  | Average         | ![pylint-yellow](/assets/images/yellow.svg)         |
-|     $(FailScore + 3*step) < *PyLint score* $<= (FailScore + 4*step)$  | Good            | ![pylint-lightgreen](/assets/images/lightgreen.svg) |
-|     $(FailScore + 4*step) < *PyLint score* <= 10$                   | Awesome         | ![pylint-green](/assets/images/green.svg)           |
+| Status          |      Lower Limit              |      Upper Limit              | Badge                                               |
+|:---------------:|:-----------------------------:|:-----------------------------:|:---------------------------------------------------:|
+| Fail            |     $0$                       |     $FailScore$               | ![pylint-fail](/assets/images/darkred.svg)          |
+| Need Improvement|     $FailScore$               |     $(FailScore + 1*step)$    | ![pylint-need-improvement](/assets/images/red.svg)  |
+| Below Average   |     $(FailScore + 1*step)$    |     $(FailScore + 2*step)$    | ![pylint-below-average](/assets/images/orange.svg)  |
+| Average         |     $(FailScore + 2*step)$    |     $(FailScore + 3*step)$    | ![pylint-average](/assets/images/yellow.svg)        |
+| Good            |     $(FailScore + 3*step)$    |     $(FailScore + 4*step)$    | ![pylint-good](/assets/images/lightgreen.svg)       |
+| Awesome         |     $(FailScore + 4*step)$    |     $10$                      | ![pylint-awesome](/assets/images/green.svg)         |
 
 The action can be triggered by a **`Pull request`**, a **`Push`** or manually with **`workflow_dispatch`**. 
 If the score is changed, the `github_action` bot will change your badge with an automatic commit.
