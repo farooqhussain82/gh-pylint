@@ -74,4 +74,7 @@ if __name__ == "__main__":
     fail_below = sys.argv[1]
     file_path = sys.argv[2]
 
+    if file_path.lower() in ("na", "null", "none"):
+        filepath=None
+
     main(file_path, fail_below)
