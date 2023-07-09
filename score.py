@@ -65,7 +65,7 @@ def main(readme_file_path, fail_below):
 
     if readme_file_path:
         if not os.path.isfile(readme_file_path):
-            raise FileNotFoundError(f"README.md path is wrong, no file can be located at {readme_file_path}")
+            raise FileNotFoundError(f"No file can be located at {readme_file_path}")
         
         update_badge(readme_file_path, score, badge_color)
 
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     fail_below = sys.argv[1]
     file_path = sys.argv[2]
 
-    if file_path.lower() in ("na", "null", "none"):
-        filepath=None
+    if file_path.strip().lower() in ("na", "null", "none"):
+        file_path=None
 
     main(file_path, fail_below)
