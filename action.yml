@@ -60,8 +60,8 @@ runs:
       id: score
       run: |
         python ${{ github.action_path }}/score.py \
-        ${{ inputs.readme-path }} \
-        ${{ inputs.fail-below }}
+        ${{ inputs.fail-below }} \
+        ${{ inputs.readme-path }}
       shell: bash
 
     - name: "Push README with changed badge to origin"
