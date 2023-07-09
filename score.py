@@ -57,6 +57,7 @@ def update_badge(readme_file_path, score, badge_color):
 
 def main(readme_file_path, fail_below):
 
+    fail_below = float(fail_below)
     color_dict = create_color_dict(fail_below)
     score = get_score(fail_below)
     badge_color = get_badge_color(score, color_dict)
