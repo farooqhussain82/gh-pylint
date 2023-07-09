@@ -34,7 +34,7 @@ def get_score(fail_below):
     if score < fail_below:
         exit_code = 1
 
-    os.system("echo exit_code=" + exit_code + " >> $GITHUB_OUTPUT")
+    os.system(f"echo exit_code={exit_code} >> $GITHUB_OUTPUT")
     return score
 
 def update_badge(readme_file_path, score, badge_color):
