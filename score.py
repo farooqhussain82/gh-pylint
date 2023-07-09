@@ -29,12 +29,13 @@ def get_score(fail_below):
         pylint_result = f.read()
     numeric_score = re.search(r"(?<=\s)(\d+\.\d+)\/\d+(?=\s)", pylint_result).group().split("/")[0]
 
+    score = float(numeric_score)
     exit_code = 0
-    if numeric_score < fail_below:
+    if score < fail_below:
         exit_code = 1
 
     os.system("echo exit_code=" + exit_code + " >> $GITHUB_OUTPUT")
-    return numeric_score
+    return score
 
 def update_badge(readme_file_path, score, badge_color):
 
