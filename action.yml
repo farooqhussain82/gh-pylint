@@ -1,4 +1,4 @@
-name: "PyLint with Customizable fail score and dynamic badge"
+name: "Pylint with Configurable Failure Score and Dynamic Badge"
 description: "Perform pylint check on one or multiple packages and update badge in README.md"
 branding:
   icon: eye
